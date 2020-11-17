@@ -15,7 +15,12 @@ using namespace std;
 /* -------------------------------------------------------------- */
 
 bool is_prime(int num) {
-	return 0;
+	for (int a = 2;a <= num - 1;a++) {
+		if (num % a == 0) {
+			return false;
+		}
+	}
+	return true;
 }
 
 int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
@@ -30,4 +35,10 @@ int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
 int main() {
 	// 以下、同様に、入出力例通りになるか確認せよ。
 	nth_prime(2, 3, 100);
+	std::cout << is_prime(1) << std::endl;
+	std::cout << is_prime(5) << std::endl;
+	std::cout << is_prime(6) << std::endl;
+	std::cout << is_prime(7) << std::endl;
+	std::cout << is_prime(8) << std::endl;
+	std::cout << is_prime(13) << std::endl;
 }
