@@ -23,16 +23,23 @@ bool is_prime(int num) {
 		if (num % a == 0) {
 			return false;
 		}
-		count++;
 	}
-	if (count == num) {
 		return true;
-	}
 }
 
 int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
 	int num_add = a;
+	int current = 0;
+	int count = 0;
 	while (num_add<=CPP2_PRIME_UPPER_LIMIT) {
+		if (is_prime(current)) {
+			count++;
+			if (count == n) {
+				return current;
+			}
+			current += d;
+		}
+
 		std::cout << num_add << std::endl;
 		num_add += d;
 }
