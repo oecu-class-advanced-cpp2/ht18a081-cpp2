@@ -15,12 +15,19 @@ using namespace std;
 /* -------------------------------------------------------------- */
 
 bool is_prime(int num) {
+	int count = 0;
+	if (num == 1) {
+		return false;
+	}
 	for (int a = 2;a <= num - 1;a++) {
 		if (num % a == 0) {
 			return false;
 		}
+		count++;
 	}
-	return true;
+	if (count == num) {
+		return true;
+	}
 }
 
 int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
