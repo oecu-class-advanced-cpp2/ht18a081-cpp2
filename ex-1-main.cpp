@@ -28,21 +28,17 @@ bool is_prime(int num) {
 }
 
 int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
-	int num_add = a;
-	int current = 0;
+	int current = a;
 	int count = 0;
-	while (num_add<=CPP2_PRIME_UPPER_LIMIT) {
+	while (current<=CPP2_PRIME_UPPER_LIMIT) {
 		if (is_prime(current)) {
 			count++;
 			if (count == n) {
 				return current;
 			}
-			current += d;
 		}
-		std::cout << num_add << std::endl;
-		num_add += d;
-}
-	//return -1;
+		current += d;
+	}
 }
 
 int main() {
@@ -59,12 +55,5 @@ int main() {
 	std::cout << nth_prime(331, 221, 177) << std::endl;
 	std::cout << nth_prime(259, 170, 40) << std::endl;
 	std::cout << nth_prime(269, 58, 102) << std::endl;
-	/*std::cout << is_prime(1) << std::endl;
-	std::cout << is_prime(5) << std::endl;
-	std::cout << is_prime(6) << std::endl;
-	std::cout << is_prime(7) << std::endl;
-	std::cout << is_prime(8) << std::endl;
-	std::cout << is_prime(13) << std::endl;
-	*/
 	return 0;
 }
