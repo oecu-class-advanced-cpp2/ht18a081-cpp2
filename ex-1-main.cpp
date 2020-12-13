@@ -13,10 +13,9 @@ using namespace std;
 * ファイルを作成せよ。
 */
 /* -------------------------------------------------------------- */
-
 bool is_prime(int num) {
 	int count = 0;
-	if (num == 1 || num < 0) {
+	if (num <= 1) {
 		return false;
 	}
 	for (int a = 2;a <= num - 1;a++) {
