@@ -38,6 +38,7 @@ int nth_prime(unsigned int a, unsigned int d, unsigned int n) {
 		}
 		current += d;
 	}
+	return false;
 }
 
 int main() {
