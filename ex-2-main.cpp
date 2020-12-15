@@ -11,23 +11,88 @@ namespace cpp2 {
 	class mcxi{
 		int m = 1000,c = 100,x = 10,i =1,num;
 	public:
-		mcxi(std::string) {
+		mcxi(const std::string& s) : value_(0) {
+			for (auto pos = s.begin(); pos != s.end(); pos++) {
+				//std::cout << *pos << std::endl;
 
+				if (*pos == *"2") {
+					value_ = 2;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"3") {
+					value_ = 3;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"4") {
+					value_ = 4;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"5") {
+					value_ = 5;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"6") {
+					value_ = 6;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"7") {
+					value_ = 7;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"8") {
+					value_ = 8;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"9") {
+					value_ = 9;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"m") {
+					value_ = 1000;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"c") {
+					value_ = 100;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if (*pos == *"x") {
+					value_ = 10;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else if(*pos == *"i"){
+					value_ = 1;
+					std::cout << *pos << ":" << value_ << std::endl;
+				}
+				else {
+
+				}
+			}
 		}
 
-		mcxi operator +(mcxi r) {
-			r.num = this->num + r.num;
-			return r;
+		mcxi operator +(const mcxi &r) {
+			//r = value_ + r.num;
+			
+			//mi.value_ = this->value_ + r.value_;
+			//return mi;
 		}
 
-		std::string to_string() {
-
+		std::string to_string() const{
+			return to_string();
 		}
+
+	private:
+		int value_;
 	};
 } // namespace cpp2
 
 
 int main() {
+	std::string s("9m9c9x");
+	auto pos = s.begin();
+	std::cout << *pos - '0' << std::endl;
+	int digit = *pos - '0';
+
+
 	cpp2::mcxi a0("xi");
 	cpp2::mcxi b0("x9i");
 	cpp2::mcxi result0 = a0 + b0;
@@ -71,9 +136,5 @@ int main() {
 	cpp2::mcxi b8("i");
 	cpp2::mcxi result8 = a8 + b8;
 	std::cout << "mx" << " " << result8.to_string() << std::endl;
-
-	cpp2::mcxi a5("i");
-	cpp2::mcxi b5("9m9c9x8i");
-	cpp2::mcxi result5 = a5 + b5;
-	std::cout << "9m9c9x9i" << " " << result5.to_string() << std::endl;
+	return 0;
 }
