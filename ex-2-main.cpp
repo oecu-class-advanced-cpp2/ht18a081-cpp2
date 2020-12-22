@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 
 namespace cpp2 {
 	/* --------------------------------------------------------------------- */
@@ -8,11 +9,23 @@ namespace cpp2 {
 	mcxi 記法を解析するクラスです。
 	*/
 	/* --------------------------------------------------------------------- */
-	class mcxi{
-		int m = 1000,c = 100,x = 10,i =1,num;
+	class mcxi {
 	public:
 		mcxi(const std::string& s) : value_(0) {
+			int digit = 0;
 			for (auto pos = s.begin(); pos != s.end(); pos++) {
+
+				if (*pos >= '2' && *pos <= '9') {
+					digit = *pos - '0';
+				}
+				else {
+					auto u = unit(*pos);
+					value_ += std::max(digit, 1) * u;
+					digit = 0;
+				}
+			}
+		}
+				/*
 				//std::cout << *pos << std::endl;
 
 				if (*pos == *"2") {
@@ -63,23 +76,33 @@ namespace cpp2 {
 					value_ = 1;
 					std::cout << *pos << ":" << value_ << std::endl;
 				}
-				else {
-
-				}
 			}
 		}
+		*/
 
 		mcxi operator +(const mcxi &r) {
-			//r = value_ + r.num;
-			
-			//mi.value_ = this->value_ + r.value_;
-			//return mi;
+			return this->value_ + r.value_;
+		}
+		mcxi(int value_) {
+			this->value_ = value_;
 		}
 
 		std::string to_string() const{
 			return to_string();
 		}
-
+private:
+	int unit(char c) {
+		switch (c) {
+		case 'm':
+			return 1000;
+		case 'c':
+			return 100;
+		case 'x':
+			return 10;
+		case 'i':
+			return 1;
+		}
+	}
 	private:
 		int value_;
 	};
@@ -87,11 +110,12 @@ namespace cpp2 {
 
 
 int main() {
+	/*
 	std::string s("9m9c9x");
 	auto pos = s.begin();
 	std::cout << *pos - '0' << std::endl;
 	int digit = *pos - '0';
-
+	*/
 
 	cpp2::mcxi a0("xi");
 	cpp2::mcxi b0("x9i");
