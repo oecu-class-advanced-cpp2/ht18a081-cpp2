@@ -26,63 +26,8 @@ namespace cpp2 {
 				}
 			}
 		}
-				/*
-				//std::cout << *pos << std::endl;
-
-				if (*pos == *"2") {
-					value_ = 2;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"3") {
-					value_ = 3;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"4") {
-					value_ = 4;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"5") {
-					value_ = 5;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"6") {
-					value_ = 6;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"7") {
-					value_ = 7;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"8") {
-					value_ = 8;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"9") {
-					value_ = 9;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"m") {
-					value_ = 1000;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"c") {
-					value_ = 100;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if (*pos == *"x") {
-					value_ = 10;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-				else if(*pos == *"i"){
-					value_ = 1;
-					std::cout << *pos << ":" << value_ << std::endl;
-				}
-			}
-		}
-		*/
 
 		mcxi operator +(const mcxi &r) {
-			std::cout <<value_<<","<< r.value_ << std::endl;
 			mcxi a = this->value_ + r.value_;
 			return a;
 		}
@@ -91,20 +36,48 @@ namespace cpp2 {
 		}
 
 		std::string to_string() const{
-			std::stringstream ss;
+			std::stringstream e;
+			int aaa = value_;
+			int m,c,x,i;
 
-			int value_ = 2000;
-			int q = value_ / 1000;
-			if (q == 1) {
-				ss << 'm';
+			m = aaa / 1000;
+			if (m == 1) {
+				e << 'm';
 			}
-			if (q > 1) {
-				ss << q;
-				ss << 'm';
+			if (m > 1 && m < 10) {
+				e << m;
+				e << 'm';
 			}
 
-			std::cout << ss.str() << std::endl;
-			return ss.str();
+			c = aaa % 1000;
+			c = c / 100;
+			if (c == 1) {
+				e << 'c';
+			}
+			if (c > 1 && c < 10) {
+				e << c;
+				e << 'c';
+			}
+
+			x = aaa % 100;
+			x = x / 10;
+			if (x == 1) {
+				e << 'x';
+			}
+			if (x > 1 && x < 10) {
+				e << x;
+				e << 'x';
+			}
+
+			i = aaa % 10;
+			if (i == 1) {
+				e << 'i';
+			}
+			if (i > 1 && i < 10) {
+				e << i;
+				e << 'i';
+			}
+			return e.str();
 		}
 
 private:
@@ -127,11 +100,6 @@ private:
 
 
 int main() {
-	std::string s("9m9c9x");
-	auto pos = s.begin();
-	std::cout << *pos - '0' << std::endl;
-	int digit = *pos - '0';
-
 	cpp2::mcxi a0("xi");
 	cpp2::mcxi b0("x9i");
 	cpp2::mcxi result0 = a0 + b0;
@@ -175,5 +143,12 @@ int main() {
 	cpp2::mcxi b8("i");
 	cpp2::mcxi result8 = a8 + b8;
 	std::cout << "mx" << " " << result8.to_string() << std::endl;
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
+	std::cin.get();
 	return 0;
 }
