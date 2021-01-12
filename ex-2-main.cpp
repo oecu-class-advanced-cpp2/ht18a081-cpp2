@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <sstream>
 
 namespace cpp2 {
 	/* --------------------------------------------------------------------- */
@@ -81,15 +82,31 @@ namespace cpp2 {
 		*/
 
 		mcxi operator +(const mcxi &r) {
-			return this->value_ + r.value_;
+			std::cout <<value_<<","<< r.value_ << std::endl;
+			mcxi a = this->value_ + r.value_;
+			return a;
 		}
 		mcxi(int value_) {
 			this->value_ = value_;
 		}
 
 		std::string to_string() const{
-			return to_string();
+			std::stringstream ss;
+
+			int value_ = 2000;
+			int q = value_ / 1000;
+			if (q == 1) {
+				ss << 'm';
+			}
+			if (q > 1) {
+				ss << q;
+				ss << 'm';
+			}
+
+			std::cout << ss.str() << std::endl;
+			return ss.str();
 		}
+
 private:
 	int unit(char c) {
 		switch (c) {
@@ -110,12 +127,10 @@ private:
 
 
 int main() {
-	/*
 	std::string s("9m9c9x");
 	auto pos = s.begin();
 	std::cout << *pos - '0' << std::endl;
 	int digit = *pos - '0';
-	*/
 
 	cpp2::mcxi a0("xi");
 	cpp2::mcxi b0("x9i");
