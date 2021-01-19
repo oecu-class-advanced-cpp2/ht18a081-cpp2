@@ -143,6 +143,7 @@ int main() {
 	cpp2::mcxi b8("i");
 	cpp2::mcxi result8 = a8 + b8;
 	std::cout << "mx" << " " << result8.to_string() << std::endl;
+
 	std::cin.get();
 	std::cin.get();
 	std::cin.get();
